@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import SetCount from './Input.js';
+import SelectColor from './Setbg.js';
+import Balls from './Balls.js';
+import React, {Component} from "react";
 
-function App() {
+function App(){
+  const [count, setCount] = React.useState(50);
+  const [color, setColor] = React.useState("rgb(56, 220, 250)");
+
+  var compStyle = {
+    display: "flex",
+    height: "60px",
+    marginLeft:"auto",
+    marginRight: "auto",
+    backgroundColor:"lightgray",
+    flexDirection: "column",
+    alignItems: "center",
+    padding:"5px"
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <div style={compStyle}>
+      <SetCount count={count} onChangeCount={(newCount)=>{setCount(newCount)}}/>
+      <SelectColor color={color} onChangeColor={(newColor)=>{setColor(newColor)}}/>
+      <Balls color={color} count={count}></Balls>
     </div>
-  );
+  )
 }
-
 export default App;
